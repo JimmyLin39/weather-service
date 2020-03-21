@@ -10,9 +10,14 @@ app.get('/v1/weather', (req, res) => {
       `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${process.env.OPEN_WEATHER_KEY}`
     )
     .then(weatherRes => {
-      return res.send(weatherRes.data)
+      return res.status(200).send(weatherRes.data)
     })
-    .catch(error => console.error(error))
+    .catch(error => {
+      console.error(error.response)
+      res
+        .status((error.response && error.response.status) || 500)
+        .send((error.response && error.response.data) || 'Server Error')
+    })
 })
 
 app.listen(PORT, () => {
