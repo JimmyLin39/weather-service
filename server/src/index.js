@@ -5,9 +5,13 @@ require('./environment')
 const axios = require('axios')
 
 app.get('/v1/weather', (req, res) => {
+  if (!req.query.city) {
+    return res.status(422).send('City name is required.')
+  }
+  const { city } = req.query
   axios
     .get(
-      `https://api.openweathermap.org/data/2.5/weather?q=London&appid=${process.env.OPEN_WEATHER_KEY}`
+      `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_KEY}`
     )
     .then(weatherRes => {
       return res.status(200).send(weatherRes.data)
