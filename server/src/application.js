@@ -1,10 +1,14 @@
 const express = require('express')
 const app = express()
-
+const router = require('express').Router()
 const axios = require('axios')
 
 module.exports = function application() {
-  app.get('/v1/weather', (req, res) => {
+  app.use('/v1', router)
+  app.use(function(req, res, next) {
+    res.status(404).send('Not Found')
+  })
+  router.get('/weather', (req, res) => {
     if (!req.query.city) {
       return res.status(422).send('City name is required.')
     }

@@ -6,7 +6,11 @@ describe('Weather', () => {
   beforeAll(() => {
     app = generateApp()
   })
-
+  test('GET / error route', async () => {
+    await request(app)
+      .get('/')
+      .expect(404)
+  })
   test('GET /v1/weather no query city', async () => {
     await request(app)
       .get('/v1/weather')
