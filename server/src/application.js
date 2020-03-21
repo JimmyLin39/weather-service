@@ -18,7 +18,8 @@ module.exports = function application() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_KEY}`
       )
       .then(weatherRes => {
-        return res.status(200).send(weatherRes.data)
+        console.log(weatherRes.data)
+        return res.status(200).json(weatherRes.data)
       })
       .catch(error => {
         console.error(error.response.data)
