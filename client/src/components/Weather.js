@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import axios from 'axios'
 
 import Button from '@material-ui/core/Button'
+import Search from './Seach'
 
 export default function Weather() {
   useEffect(() => {
@@ -11,8 +12,11 @@ export default function Weather() {
       .catch(error => console.error(error))
   }, [])
   return (
-    <Button variant='contained' color='primary'>
-      Hello World
-    </Button>
+    <>
+      <Search />
+      <Button variant='contained' color='primary'>
+        Hello World
+      </Button>
+    </>
   )
 }
