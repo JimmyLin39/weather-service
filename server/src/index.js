@@ -1,4 +1,4 @@
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 8001
 require('./environment')
 const app = require('./application')()
 const server = require('http').Server(app)
