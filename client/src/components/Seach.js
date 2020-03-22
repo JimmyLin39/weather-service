@@ -11,7 +11,7 @@ const useStyles = makeStyles(theme => ({
     padding: '2px 4px',
     display: 'flex',
     alignItems: 'center',
-    width: 400
+    width: 350
   },
   input: {
     marginLeft: theme.spacing(1),
@@ -36,6 +36,7 @@ export default function Search(props) {
         className={classes.input}
         placeholder='Search City Weather'
         inputProps={{ 'aria-label': 'search city weather' }}
+        value={input}
         onChange={e => setInput(e.target.value)}
       />
       <IconButton
@@ -44,6 +45,7 @@ export default function Search(props) {
         aria-label='search'
         onClick={e => {
           e.preventDefault()
+          setInput('')
           props.handleSubmit(input)
         }}
       >

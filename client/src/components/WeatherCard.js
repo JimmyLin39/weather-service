@@ -10,7 +10,7 @@ import { degToCompass } from '../util'
 const useStyles = makeStyles({
   root: {
     padding: '2px 4px',
-    width: 400,
+    width: 350,
     marginTop: '10px'
   },
   bullet: {
@@ -37,7 +37,14 @@ export default function WeatherCard(props) {
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Box display='flex' flexDirection='row' alignItems='center' p={1} m={1}>
+        <Box
+          display='flex'
+          flexDirection='row'
+          justifyContent='space-between'
+          alignItems='center'
+          p={1}
+          m={1}
+        >
           <Box p={1}>
             <Typography variant='h5' component='h2'>
               {weather.name}
@@ -53,7 +60,14 @@ export default function WeatherCard(props) {
             </Typography>
           </Box>
         </Box>
-        <Box display='flex' flexDirection='row' alignItems='center' p={1} m={1}>
+        <Box
+          display='flex'
+          flexDirection='row'
+          justifyContent='space-between'
+          alignItems='center'
+          p={1}
+          m={1}
+        >
           <Box p={1}>
             <div id='icon'>
               <img
