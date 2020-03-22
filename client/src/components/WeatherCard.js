@@ -1,10 +1,9 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
-import CardActions from '@material-ui/core/CardActions'
 import CardContent from '@material-ui/core/CardContent'
-import Button from '@material-ui/core/Button'
 import Typography from '@material-ui/core/Typography'
+import Box from '@material-ui/core/Box'
 import PropTypes from 'prop-types'
 import { degToCompass } from '../util'
 
@@ -29,28 +28,47 @@ export default function WeatherCard(props) {
   const { weather } = props
   console.log(weather)
   const { wind } = weather
-  const { humidity } = weather.main
+  const currentWeather = weather.weather[0]
+  const { temp, humidity } = weather.main
   const windDirection = degToCompass(wind.deg)
   const classes = useStyles()
   return (
     <Card className={classes.root}>
       <CardContent>
-        <Typography variant='h5' component='h2'>
-          {weather.name}
-        </Typography>
-        <Typography className={classes.pos} color='textSecondary'>
-          {windDirection} {wind.speed} m/s <br />
-          Humidity {humidity}%
-        </Typography>
-        <Typography variant='body2' component='p'>
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
-        </Typography>
+        <Box display='flex' flexDirection='row' alignItems='center' p={1} m={1}>
+          <Box p={1}>
+            <Typography variant='h5' component='h2'>
+              {weather.name}
+            </Typography>
+            <Typography className={classes.pos} color='textSecondary'>
+              {currentWeather.main}
+            </Typography>
+          </Box>
+          <Box p={1}>
+            <Typography variant='body2' color='textSecondary'>
+              {windDirection} {wind.speed} m/s <br />
+              Humidity {humidity}%
+            </Typography>
+          </Box>
+        </Box>
+        <Box display='flex' flexDirection='row' p={1} m={1}>
+          <Box p={1}>
+            <div id='icon'>
+              <img
+                id='wicon'
+                src={`https://openweathermap.org/img/wn/${currentWeather.icon}@2x.png`}
+                alt='Weather icon'
+              ></img>
+            </div>
+          </Box>
+          <Box p={1}>
+            <Typography variant='h2' component='h2'>
+              {parseInt(temp)}
+              <span>&#xb0;</span>
+            </Typography>
+          </Box>
+        </Box>
       </CardContent>
-      <CardActions>
-        <Button size='small'>Learn More</Button>
-      </CardActions>
     </Card>
   )
 }
