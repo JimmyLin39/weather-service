@@ -28,7 +28,6 @@ const useStyles = makeStyles({
 
 export default function WeatherCard(props) {
   const { weather } = props
-  console.log(weather)
   const { wind } = weather
   const currentWeather = weather.weather[0]
   const { temp, humidity } = weather.main
