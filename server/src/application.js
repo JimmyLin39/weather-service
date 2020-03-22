@@ -2,8 +2,12 @@ const express = require('express')
 const app = express()
 const router = require('express').Router()
 const axios = require('axios')
+const helmet = require('helmet')
+const cors = require('cors')
 
 module.exports = function application() {
+  app.use(cors())
+  app.use(helmet())
   app.use('/v1', router)
   app.use(function(req, res) {
     res.status(404).send('Not Found')
