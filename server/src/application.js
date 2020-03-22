@@ -5,7 +5,7 @@ const axios = require('axios')
 
 module.exports = function application() {
   app.use('/v1', router)
-  app.use(function(req, res, next) {
+  app.use(function(req, res) {
     res.status(404).send('Not Found')
   })
   router.get('/weather', (req, res) => {
@@ -18,7 +18,6 @@ module.exports = function application() {
         `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.OPEN_WEATHER_KEY}`
       )
       .then(weatherRes => {
-        console.log(weatherRes.data)
         return res.status(200).json(weatherRes.data)
       })
       .catch(error => {
