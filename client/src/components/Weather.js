@@ -4,11 +4,22 @@ import axios from 'axios'
 import Search from './Seach'
 import Snackbars from './UI/SnackBar'
 import WeatherCard from './WeatherCard'
+import { makeStyles } from '@material-ui/core/styles'
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    marginTop: '10%'
+  }
+})
 
 export default function Weather() {
   const [city, setCity] = useState('vancouver')
   const [currentWeather, setCurrentWeather] = useState(null)
   const [errorMsg, setErrorMsg] = useState(null)
+  const classes = useStyles()
   useEffect(() => {
     if (city) {
       axios
@@ -37,8 +48,10 @@ export default function Weather() {
           handleClose={() => setErrorMsg(null)}
         />
       )}
-      <Search handleSubmit={handleSubmit} errorMsg={errorMsg} />
-      {currentWeather && <WeatherCard weather={currentWeather} />}
+      <div className={classes.root}>
+        <Search handleSubmit={handleSubmit} errorMsg={errorMsg} />
+        {currentWeather && <WeatherCard weather={currentWeather} />}
+      </div>
     </>
   )
 }

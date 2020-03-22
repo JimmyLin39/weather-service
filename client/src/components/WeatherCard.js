@@ -9,7 +9,9 @@ import { degToCompass } from '../util'
 
 const useStyles = makeStyles({
   root: {
-    minWidth: 275
+    padding: '2px 4px',
+    width: 400,
+    marginTop: '10px'
   },
   bullet: {
     display: 'inline-block',
@@ -51,7 +53,7 @@ export default function WeatherCard(props) {
             </Typography>
           </Box>
         </Box>
-        <Box display='flex' flexDirection='row' p={1} m={1}>
+        <Box display='flex' flexDirection='row' alignItems='center' p={1} m={1}>
           <Box p={1}>
             <div id='icon'>
               <img
