@@ -13,7 +13,7 @@ March 22, 2020
 ### Location of deployed application
 
 The client side project is built using React with Material-UI and deployed on Netlify: https://weather-service.netlify.com/
-The server side project is built using Node.js with Express and deployed on Heroku.
+The server side project is built using Node.js with Express and deployed on Heroku, it might take sometime to boot up the Heroku server.
 
 ### Time spent
 
