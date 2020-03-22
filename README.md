@@ -39,6 +39,12 @@ Backend:
 
 The backend service will run on [http://localhost:8001](http://localhost:8001)
 
+Deploy to Heroku:
+
+```
+> git subtree push --prefix server heroku master
+```
+
 Frontend:
 
 ```
