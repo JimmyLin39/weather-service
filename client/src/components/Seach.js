@@ -4,6 +4,7 @@ import Paper from '@material-ui/core/Paper'
 import InputBase from '@material-ui/core/InputBase'
 import IconButton from '@material-ui/core/IconButton'
 import SearchIcon from '@material-ui/icons/Search'
+import PropTypes from 'prop-types'
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -25,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export default function Search() {
+export default function Search(props) {
   const classes = useStyles()
   const [input, setInput] = React.useState('')
 
@@ -43,11 +44,15 @@ export default function Search() {
         aria-label='search'
         onClick={e => {
           e.preventDefault()
-          console.log(input)
+          props.handleSubmit(input)
         }}
       >
         <SearchIcon />
       </IconButton>
     </Paper>
   )
+}
+
+Search.propTypes = {
+  handleSubmit: PropTypes.func.isRequired
 }
